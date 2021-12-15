@@ -494,7 +494,8 @@ class MQTTThread(weewx.restx.RESTThread):
                 mc.connect(url.hostname, url.port)
                 mc.loop_start()
                 if self.aggregation.find('aggregate') >= 0:
-                    tpc = self.topic + '/loop'
+                    #tpc = self.topic + '/loop'
+                    tpc = self.topic
                     (res, mid) = mc.publish(tpc, json.dumps(data),
                                             retain=self.retain, qos=self.qos)
                     if res != mqtt.MQTT_ERR_SUCCESS:
